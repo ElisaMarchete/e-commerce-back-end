@@ -41,13 +41,6 @@ Product.init(
         key: "id", // the column in the referenced model to link with
       },
     },
-    tag_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "tag",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,
