@@ -31,7 +31,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //localhost:3001/api/categories/ -> POST (CREATE)
-//{"category_name": "Glasses"}
+//{"category_name": "Books"}
 router.post("/", async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
