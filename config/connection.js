@@ -14,9 +14,6 @@ const sequelize = process.env.JAWSDB_URL
         dialectOptions: {
           decimalNumbers: true,
         },
-        logging: (query) => {
-          console.log(`Executed query: ${query}`);
-        },
       }
     );
 

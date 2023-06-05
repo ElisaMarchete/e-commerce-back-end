@@ -35,28 +35,26 @@ router.get("/:id", async (req, res) => {
 //localhost:3001/api/products/ -> POST (CREATE)
 router.post("/", async (req, res) => {
   try {
-    const productData = await Product.create(req.body)
-
-      .then((product) => {
-        // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-        if (req.body.tagIds.length) {
-          console.log(req.body.tagIds);
-          const productTagIdArr = req.body.tagIds.map((tag_id) => {
-            return {
-              product_id: product.id,
-              tag_id,
-            };
-          });
-          return ProductTag.bulkCreate(productTagIdArr);
-        }
-        // if no product tags, just respond
-        res.status(200).json(product);
-      })
-      .then((productTagIds) => res.status(200).json(productTagIds))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
+    const productData = await Product.create(req.body);
+    // console.log({ productData });
+    if (req.body.tagIds.length) {
+      // console.log(req.body.tagIds);
+      const productTagIdArr = req.body.tagIds.map((tag_id) => {
+        // console.log({ tag_id });
+        // map is a for loop (array) it goes one by one in the array
+        return {
+          product_id: productData.id,
+          tag_id,
+        };
       });
+      // console.log({ productTagIdArr });
+
+      const result = await ProductTag.bulkCreate(productTagIdArr);
+      // console.log({ result });
+      return res.status(200).json(result);
+    }
+    // if no product tags, just respond
+    res.status(200).json(productData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -105,6 +103,7 @@ router.put("/:id", async (req, res) => {
     });
 });
 
+// localhost:3001/api/products/17 -> DELETE
 router.delete("/:id", async (req, res) => {
   // delete one product by its `id` value
   try {
