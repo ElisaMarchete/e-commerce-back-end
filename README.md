@@ -1,9 +1,15 @@
 # E-Commerce Back End
 
 This is the back-end of an E-Commerce application built using Express.js API and Sequelize as the ORM (Object-Relational Mapping) library. It provides a RESTful API for managing products, orders, and users.
+
+## Table of Contents
+* [Instalation](#instalation)
+* [Usage](#usage)
+* [License](#license)
+* [Walkthrough Video](#walkthrough-video)
 ## Instalation
 To get started with the project, follow these steps: 
-1. Clone the repository 
+1. Clone the repository
 2. Install the dependencies 
 3. Create the database 
 4. Seed the database
@@ -21,6 +27,6 @@ To test the API routes, you can use Insomnia as demostrated in the walkthrough v
 This project is licensed under the MIT license.
 
 ## Walkthrough Video
-[Watch the video](https://watch.screencast)
+[Watch the video](https://watch.screencastify.com/v/RnpUyljb6R7Lk02OWjrT)
 
 
